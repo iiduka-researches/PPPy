@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-from typing import List
 from matplotlib import pyplot as plt
 
 from pppy.utils import header_decomposition
@@ -29,7 +28,7 @@ def performance_profile(path: str, stop: float=5., step: float=1e-2, tau: str=No
         Whether to show the grid lines.
     '''
     df : pd.DataFrame = pd.read_csv(path)
-    header : List[str] = df.columns.values.tolist()
+    header : list[str] = df.columns.values.tolist()
     data : np.ndarray = df.values
 
     if np.min(data) <= 0.:
@@ -39,7 +38,7 @@ def performance_profile(path: str, stop: float=5., step: float=1e-2, tau: str=No
     num_s : int = data.shape[1]
     r : np.ndarray = data.T / np.min(data, axis=1)
 
-    info : List[dict] = header_decomposition(header)
+    info : list[dict] = header_decomposition(header)
 
     def _pp(t: float, index: int) -> float:
         return np.count_nonzero(r[index] <= t) / num_p

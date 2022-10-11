@@ -1,8 +1,7 @@
 import re
-from typing import List
 
 
-def header_decomposition(header: List[str]) -> List[dict]:
+def header_decomposition(header: list[str]) -> list[dict]:
     '''
     Decompose the header and return the List of the dictionaries.
     The decomposition is::
@@ -16,12 +15,12 @@ def header_decomposition(header: List[str]) -> List[dict]:
     
     Parameters
     ----------
-    header : List[str]
+    header : list[str]
         Header to decompose.
     
     Returns
     -------
-    info : List[dict]
+    info : list[dict]
         List of the decomposed header.
 
     Examples
@@ -31,7 +30,7 @@ def header_decomposition(header: List[str]) -> List[dict]:
     >>> info
     [{'label': 'AAA', 'V': 'W', 'X': 'Y'}, {'label': 'BBB', 'X': 'Z'}]
     '''
-    info : List[dict] = []
+    info : list[dict] = []
     for name in header:
         d = dict()
         label = re.findall('\A[^<]+', name)[0]
